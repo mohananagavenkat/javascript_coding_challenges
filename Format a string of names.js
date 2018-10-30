@@ -47,3 +47,10 @@ console.log(list([{ name: 'Bart' }]))
 console.log(list([]))
 // returns ''
 
+// clever voted solution
+
+function list1(names) {
+    var xs = names.map(p => p.name)
+    var x = xs.pop()
+    return xs.length ? xs.join(", ") + " & " + x : x || ""
+  }
