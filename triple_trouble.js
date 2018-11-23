@@ -13,14 +13,18 @@
 
 function tripledouble(num1, num2) {
     const matches = num1.toString().match(/(\d)\1{2}/g);
-    if(matches.length == 0){
+    if(matches == null || matches.length == 0){
         return 0;
     }
-    const digit = matches[0][0];
-    const regexS = `${digit}{2}`;
-    const re = new RegExp(regexS, "g");
-    if(re.test(num2)){
-        return 1;
+    for(let i = 0 ; i < matches.length; i++){
+        const digit = matches[i][0];
+        const regexS = `${digit}{2}`;
+        const re = new RegExp(regexS, "g");
+        if(re.test(num2)){
+            return 1;
+        }
     }
-    //return ( /(\d)\1{2}/g.test(num1) && /(\d)\1{1}/g.test(num2) ) ? 1 : 0
+    return 0;
 }
+
+console.log(tripledouble(12223333444555,5534598));
